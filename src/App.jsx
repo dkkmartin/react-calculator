@@ -3,19 +3,23 @@ import { Buttons } from './Components/Buttons'
 import { Screen } from './Components/Screen'
 import './app.css'
 
-function App () {
+export default function App () {
   const [calculation, setCalculation] = useState('')
 
-  function handleChangeOnScreen (value) {
-    setCalculation((prevCalc) => prevCalc + value)
+  function evalCalculation () {
+    // eslint-disable-next-line no-eval
+    const result = eval(calculation)
+    setCalculation(result)
+  }
+
+  function clearSreen () {
+    setCalculation('')
   }
 
   return (
     <div className='calculator__con'>
-      <Screen calculation={calculation} onChange={setCalculation}></Screen>
-      <Buttons onClick={() => handleChangeOnScreen(value)}></Buttons>
+      <Screen calcForScreen={calculation}></Screen>
+      <Buttons clearScreen={clearSreen} equals={evalCalculation} calc={setCalculation}></Buttons>
     </div>
   )
 }
-
-export default App

@@ -1,10 +1,10 @@
 import '../app.css'
 
 // eslint-disable-next-line react/prop-types
-export function Screen ({ calculation }) {
+export function Screen ({ calcForScreen }) {
   return (
     <>
-      <div className="screen">{calculation}</div>
+      <div className="screen">{calcForScreen}</div>
     </>
   )
 }
